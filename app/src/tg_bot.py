@@ -16,10 +16,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Hello! I am a language model. Ask me anything!")
 
 async def handle_text(update: Update, context: CallbackContext) -> None:
+    bot_message = await update.message.reply_text("🤖")
+    await update.message.reply_chat_action("typing")
     print(f"Received text: {update.message.text}")
-    response = llm.call(update.message.text)
+    response = await llm.call(update.message.text, update)
     print(f"Received response: {response}")
-    await update.message.reply_text(response)
+    await update.message.reply_text(response, parse_mode="Markdown")
+    await context.bot.delete_message(chat_id=update.effective_chat.id, message_id=bot_message.message_id)
 
 def main() -> None:
     app = Application.builder().token(os.getenv('TELEGRAM_TOKEN')).build()
