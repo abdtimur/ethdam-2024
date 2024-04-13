@@ -1,0 +1,22 @@
+{
+    "check": "erc20-interface",
+    "impact": "Medium",
+    "confidence": "High",
+    "description": "UpgradedStandardToken (crytic-export/etherscan-contracts/0xdac17f958d2ee523a2206206994597c13d831ec7-TetherToken.sol#303-309) has incorrect ERC20 function interface:BasicToken.transfer(address,uint256) (crytic-export/etherscan-contracts/0xdac17f958d2ee523a2206206994597c13d831ec7-TetherToken.sol#122-135)\n",
+    "elements": [
+      {
+        "type": "contract",
+        "name": "UpgradedStandardToken"
+      },
+      {
+        "type": "function",
+        "name": "transfer",
+        "type_specific_fields": {
+          "parent": {
+            "type": "contract",
+            "name": "BasicToken"
+          }
+        }
+      }
+    ]
+  }

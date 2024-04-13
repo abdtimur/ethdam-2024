@@ -10,4 +10,5 @@ from llm import MainLlm
 load_dotenv()
 llm = MainLlm()
 response = llm.call("I'm going to send tx to 0xdac17f958d2ee523a2206206994597c13d831ec7, is it safe?")
+# response = llm.call("I want to mint USDT tokens, is it safe?")
 print(f"Received response: {response}")

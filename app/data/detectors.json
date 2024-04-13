@@ -639,7 +639,7 @@
       "wiki_recommendation": "Do not use public mapping with nested structures."
     },
     {
-      "argument": "redundant-statements",
+      "argument": "redundant-statements", 
       "help": "Redundant statements",
       "impact": "DetectorClassification.INFORMATIONAL",
       "confidence": "DetectorClassification.HIGH",

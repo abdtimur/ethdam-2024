@@ -61,8 +61,10 @@ slither = load_by_address('0xdac17f958d2ee523a2206206994597c13d831ec7')
 # detector_names = [d.ARGUMENT for d in detectors if hasattr(d, 'ARGUMENT')]
 # print(detector_names)
 
-# for detector in detectors:
-#     slither.register_detector(detector)
+detectors = [getattr(all_detectors, name) for name in dir(all_detectors)]
+detectors = [d for d in detectors if inspect.isclass(d) and issubclass(d, AbstractDetector)]
+for detector in detectors:
+    slither.register_detector(detector)
 
 # slither.register_detector(detectors[0])
 
@@ -71,7 +73,7 @@ results = slither.run_detectors()
 # results = slither.run_detectors()
 print(results)
 
-save_detectors_info_to_json(slither)
+# save_detectors_info_to_json(slither)
 # Print all the contracts from the USDT address
 # print([str(c) for c in compilation_unit.contracts])
 # Print the most derived contracts from the USDT address
