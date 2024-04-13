@@ -1,1 +1,1 @@
-Security Guard project for ETHDam 2024
+Cryptic Shield project for ETHDam 2024
