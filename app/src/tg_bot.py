@@ -15,7 +15,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     + "• *Static Analysis of Contract Codes*: Send me any smart contract code with upcoming tx details, and I'll use the powerful Slither API to analyze it. I check for common vulnerabilities and issues using both public and custom detectors.\n"
     + "• *Risk Assessment*: I'll provide an evaluation of potential risks associated with the contract to help you make informed decisions.\n"
     + "• *Guidance and Suggestions*: Based on the analysis, I offer practical steps and recommendations to enhance the safety of your transactions.\n\n"
-    + "To get started, simply send me a smart contract address or the contract code itself, and I'll take care of the rest.\n"
+    + "To get started, simply send me a smart contract address with your question or concerns, and I'll take care of the rest.\n"
     + "Let's secure your crypto journey together! 💪", parse_mode="Markdown")
 
 async def handle_test1(update: Update, context: CallbackContext):
@@ -42,7 +42,6 @@ async def process_request(update: Update, text: str, context: CallbackContext):
 
 def main() -> None:
     app = Application.builder().token(os.getenv('TELEGRAM_TOKEN')).build()
-    
     # Handlers define how different types of updates are handled
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("test1", handle_test1))
@@ -51,7 +50,6 @@ def main() -> None:
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))  
 
     print("Starting the bot...")
-    # Run the bot until you press Ctrl-C
     app.run_polling()
 
 if __name__ == '__main__':
