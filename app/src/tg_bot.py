@@ -21,15 +21,27 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_test1(update: Update, context: CallbackContext):
     test1 = "Want to approve some amount at furucombo contract here:\n 0xA013AfbB9A92cEF49e898C87C060e6660E050569\nCan you check it for me please?"
     await update.message.reply_text("Replying to test1 message:\n" + test1)
-    await process_request(update, test1, context)
+    try:
+        await process_request(update, test1, context)
+    except Exception as e:
+        print(e)
+        await update.message.reply_text("An error occurred while processing the request. Sometimes this happens with the hack builds😬\nPlease try again!")
 
 async def handle_test2(update: Update, context: CallbackContext):
     test2 = "I want to use 1inch to convert my USDC to ETH. It says I need to approve my tokens first, is it safe?\nHere is the target contract code:\n0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
     await update.message.reply_text("Replying to test2 message:\n" + test2)
-    await process_request(update, test2, context)
+    try:
+        await process_request(update, test2, context)
+    except Exception as e:
+        print(e)
+        await update.message.reply_text("An error occurred while processing the request. Sometimes this happens with the hack builds😬\nPlease try again!")
 
 async def handle_text(update: Update, context: CallbackContext):
-    await process_request(update, update.message.text, context)
+    try:
+        await process_request(update, update.message.text, context)
+    except Exception as e:
+        print(e)
+        await update.message.reply_text("An error occurred while processing the request. Sometimes this happens with the hack builds😬\nPlease try again!")
 
 async def process_request(update: Update, text: str, context: CallbackContext):
     bot_message = await update.message.reply_text("🤖")
